@@ -11,6 +11,9 @@ DigitalOut led1(LED1);
 
 int main()
 {
-    led1 = !led1;
-    wait_ms( WAIT_TIME );
+    while (true)
+    {
+        led1 = !led1;
+        wait_ms(WAIT_TIME);
+    }
 }
