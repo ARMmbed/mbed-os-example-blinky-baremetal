@@ -14,6 +14,6 @@ int main()
     while (true)
     {
         led1 = !led1;
-        wait_us(WAIT_TIME * 1000);
+        thread_sleep_for(WAIT_TIME);
     }
 }
