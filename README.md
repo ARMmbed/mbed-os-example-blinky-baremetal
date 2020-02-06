@@ -46,7 +46,7 @@ The LED on your target turns on and off every 500 milliseconds and the serial te
 
 ``` 
 --- Terminal on /dev/tty.usbmodem21102 - 9600,8,N,1 ---
-This is the bare metal blinky Mbed OS example.
+This is the bare metal blinky example running on Mbed OS 99.99.99.
 ``` 
 
 ## Configuring the application
@@ -114,7 +114,9 @@ To build with the minimal console functionality, the application configuration f
 #### Memory comparison
 
 Example configuration files are provided under the `configs/` directory. You may override the `mbed_app.json` with either of these using the `--appconfig` optional argument.
-The below table shows result for the blinky bare metal application compiled with the release profile on K64F for two toolchains. The baseline configuration used is the blinky baremetal application built with the standard C library.
+The below table shows result for the blinky bare metal application compiled with the release profile on K64F for two toolchains.
+
+The baseline configuration used is the blinky baremetal application built with the standard C library.
 
 GCC_ARM:
 
