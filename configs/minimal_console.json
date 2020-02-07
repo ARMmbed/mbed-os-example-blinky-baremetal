@@ -1,8 +1,0 @@
-{
-    "requires": ["bare-metal"],
-    "target_overrides": {
-      "*": {
-        "platform.stdio-minimal-console-only": true
-      }
-    }
-}

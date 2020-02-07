@@ -5,23 +5,13 @@ This example shows how to achieve memory optimisations in Mbed. Starting with a 
 
 You can build this project with all supported [Mbed OS build tools](https://os.mbed.com/docs/mbed-os/latest/tools/index.html). However, this example project specifically refers to the command-line interface tool [Arm Mbed CLI](https://github.com/ARMmbed/mbed-cli#installing-mbed-cli).
 
+1. Install Mbed CLI.
+1. Clone this repository on your system.
+1. Change the current directory to where the project was cloned.
+
 ## Application functionality
 
 The `main()` function toggles the state of a digital output connected to an LED on the board.
-
-## Prerequisites
-
-1. Install Mbed CLI.
-1. Determine the toolchain that supports your target.
-
-   Depending on the target, the example project can be built with the GCC_ARM, ARM or IAR toolchain. Run this command to determine which toolchain supports your target:
-
-   ```bash
-   $ mbed compile -S
-   ```
-   
-1. Clone this repository on your system.
-1. Change the current directory to where the project was cloned.
 
 ## Building and running
 
@@ -39,6 +29,12 @@ Your PC may take a few minutes to compile your code.
 The binary is located at `./BUILD/<TARGET>/<TOOLCHAIN>/mbed-os-example-blinky-baremetal.bin`.
 
 Alternatively, you can manually copy the binary to the target, which gets mounted on the host computer through USB.
+
+Depending on the target, you can build the example project with the `GCC_ARM`, `ARM` or `IAR` toolchain. After installing Arm Mbed CLI, run the command below to determine which toolchain supports your target:
+
+```bash
+$ mbed compile -S
+```
 
 ## Expected output 
 
@@ -61,8 +57,6 @@ To build with the bare metal profile, the application configuration file must c
     "requires": ["bare-metal"]
 }
 ```
-
-Note: For convenience, a few configuration files are present in the `configs` directory so you can try some of the different configurations shown in this example.
 
 ### Futher optimisations
 
@@ -96,6 +90,8 @@ To build with the minimal printf library and disable floating points printing, t
 }
 ```
 
+Further optimisations are possible and details are in the minimal printf README.
+
 #### Using a minimal console
 
 If your application only needs basic unbuffered I/O operations then you can save additional memory by using a configuration of the platform library which removes file handling functionality from the [system I/O retarget code](https://github.com/ARMmbed/mbed-os/blob/master/platform/source/mbed_retarget.cpp).
@@ -113,7 +109,6 @@ To build with the minimal console functionality, the application configuration f
 
 #### Memory comparison
 
-Example configuration files are provided under the `configs/` directory. You may override the `mbed_app.json` with either of these using the `--appconfig` optional argument.
 The below table shows result for the blinky bare metal application compiled with the release profile on K64F for two toolchains.
 
 The baseline configuration used is the blinky baremetal application built with the standard C library.
