@@ -77,6 +77,8 @@ To build with the smaller C libraries, modify the application configuration file
 }
 ```
 
+If the build system throws an error when compiling with the small C library, you can find more information [here]( https://github.com/ARMmbed/mbed-os-5-docs/blob/development/docs/program-setup/bare_metal/c_small_libs.md).
+
 #### Using Mbed minimal printf library
 
 Mbed OS offers a smaller `printf()` alternative. The [minimal printf](https://github.com/ARMmbed/mbed-os/blob/master/platform/source/minimal-printf/README.md) library implements a subset of the `v/s/f/printf` function family, and you can disable floating points to save additional code size.
