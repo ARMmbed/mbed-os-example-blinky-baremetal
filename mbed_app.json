@@ -1,7 +1,7 @@
 {
     "requires": ["bare-metal"],
     "target_overrides": {
-      "*": {  
+      "*": {
         "target.printf_lib": "minimal-printf",
         "platform.minimal-printf-enable-floating-point": "false",
         "platform.stdio-minimal-console-only": true
