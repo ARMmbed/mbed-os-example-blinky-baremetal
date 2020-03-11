@@ -90,7 +90,7 @@ To build with the minimal printf library and disable floating points printing, y
     "target_overrides": {
         "*": {
             "target.printf_lib": "minimal-printf",
-            "platform.minimal-printf-enable-floating-point": "false"
+            "platform.minimal-printf-enable-floating-point": false
         }
     }
 }
@@ -108,7 +108,7 @@ To build with the minimal console functionality, modify the application configur
 {
     "target_overrides": {
         "*": {
-            "platform.stdio-minimal-console-only": "true"
+            "platform.stdio-minimal-console-only": true
         }
     }
 }
@@ -116,33 +116,18 @@ To build with the minimal console functionality, modify the application configur
 
 #### Memory comparison
 
-The below table shows the result for the blinky bare metal application compiled with the release profile on K64F for two toolchains.
+The below table shows the result for the blinky bare metal application compiled with the release profile on K64F for the GCC_ARM toolchain.
 
 The baseline configuration used is the blinky bare metal application built with the standard C library.
 
-GCC_ARM:
+Mbed OS release: mbed-os-6.0.0-alpha-2
 
 |Standard C lib|Small C lib|Minimal printf|Minimal console|RAM|Flash|
 | :---:        | :---:     | :---:        | :---:         | :---: | :---: |
 | X            |           |              |               | 0 | 0 |
-|              | X         |              |               | -2,592 | -24,727 |
-| X            |           | X            |               | 0 | -14,700 | 
-|              | X         | X            |               | -2,592 | -24,338 |
-| X            |           |              | X             | 0 | -904 |
-|              | X         | X            | X             | -2,592 | -25,226 |
-|              | X         |              | X             |  **-2,592** | **-25,615** |
-
-Arm Compiler 6:
-
-|Standard C lib|Small C lib|Minimal printf|Minimal console|RAM|Flash|
-| :---:        | :---:     | :---:        | :---:         | :---: | :---: |
-| X            |           |              |               | xxxxx | 0 |
-|              | X         |              |               | xxxxx | -6,820 |
-| X            |           | X            |               | xxxxx | -5,555 | 
-|              | X         | X            |               | xxxxx | -8.878 |
-| X            |           |              | X             | xxxxx | -1,698 |
-|              | X         | X            | X             | xxxxx | **-10,348** |
-|              | X         |              | X             | xxxxx | -8,290 |
+|              | X         |              |               | -2,592 | -28,581 |
+|              | X         | X            |               | -2,592 | -29,918 |
+|              | X         | X            | X             | -2,592 | -30,810 |
 
 ## Troubleshooting 
 
