@@ -16,13 +16,12 @@ The `main()` function toggles the state of a digital output connected to an LED 
 ## Building and running
 
 1. Connect a USB cable between the USB port on the target and the host computer.
-1. Run the following command to build the example project and program the microcontroller flash memory:
+1. Run the following command to build the example project, program the microcontroller flash memory, and open a serial terminal:
 
-   ```bash
+   ```
    $ mbed compile -m <TARGET> -t <TOOLCHAIN> --flash --sterm
    ```
-   
-Note: You can use the Mbed CLI command-line option "--sterm" to open a serial terminal after flashing.
+
 
 Your PC may take a few minutes to compile your code.
 
@@ -32,7 +31,7 @@ Alternatively, you can manually copy the binary to the target, which gets mounte
 
 Depending on the target, you can build the example project with the `GCC_ARM`, `ARM` or `IAR` toolchain. After installing Arm Mbed CLI, run the command below to determine which toolchain supports your target:
 
-```bash
+```
 $ mbed compile -S
 ```
 
@@ -40,34 +39,34 @@ $ mbed compile -S
 
 The LED on your target turns on and off every 500 milliseconds, and the serial terminal shows an output similar to: 
 
-``` 
+```
 --- Terminal on /dev/tty.usbmodem21102 - 9600,8,N,1 ---
 This is the bare metal blinky example running on Mbed OS 99.99.99.
 ``` 
 
 ## Configuring the application
 
-### The bare metal mode
+### The bare metal profile
 
-The bare metal mode is a configuration of Mbed OS that excludes the RTOS, as well as other features. We designed it specifically for memory-constrained devices because it gives you more control over the system. For more details, please see [the bare metal documentation](https://os.mbed.com/docs/mbed-os/latest/reference/mbed-os-bare-metal.html)
+The bare metal profile is a configuration of Mbed OS that excludes the RTOS, as well as other features. We designed it specifically for ultraconstrained devices because it gives you more control over the system. For more details, please see [the bare metal documentation](https://os.mbed.com/docs/mbed-os/latest/reference/mbed-os-bare-metal.html)
 
 To build with the bare metal profile, the application configuration file must contain:
 
-```
+```json
 {
     "requires": ["bare-metal"]
 }
 ```
 
 ### Futher optimizations
-
+Some of the configurations shown below are already set by default in `targets/targets.json` and `platform/mbed_lib.json`.
 #### Linking with smaller C libraries
 
 Both the `ARM` and `GCC_ARM` toolchains support optimized versions of their C standard libraries, microlib and newlib-nano. We recommend using them with the bare metal profile.
 
 To build with the smaller C libraries, modify the application configuration file:
 
-```
+```json
 {
     "target_overrides": {
         "*": {
@@ -77,15 +76,15 @@ To build with the smaller C libraries, modify the application configuration file
 }
 ```
 
-If the build system throws an error when compiling with the small C library, you can find more information [here]( https://github.com/ARMmbed/mbed-os-5-docs/blob/development/docs/program-setup/bare_metal/c_small_libs.md).
+The build system build system reverts to the standard C library if support for the small C library is not enabled for your target. You can find more information [here]( https://github.com/ARMmbed/mbed-os-5-docs/blob/development/docs/program-setup/bare_metal/c_small_libs.md).
 
 #### Using Mbed minimal printf library
 
-Mbed OS offers a smaller `printf()` alternative. The [minimal printf](https://github.com/ARMmbed/mbed-os/blob/master/platform/source/minimal-printf/README.md) library implements a subset of the `v/s/f/printf` function family, and you can disable floating points to save additional code size.
+Mbed OS offers a smaller `printf()` alternative. The [minimal printf](https://github.com/ARMmbed/mbed-os/blob/master/platform/source/minimal-printf/README.md) library implements a subset of the `v/s/f/printf` function family, and you can disable floating points to further reduce code size.
 
 To build with the minimal printf library and disable floating points printing, you need to modify the application configuration file:
 
-```
+```json
 {
     "target_overrides": {
         "*": {
@@ -104,7 +103,7 @@ If your application only needs unbuffered I/O operations, you can save additiona
 
 To build with the minimal console functionality, modify the application configuration file:
 
-```
+```json
 {
     "target_overrides": {
         "*": {
