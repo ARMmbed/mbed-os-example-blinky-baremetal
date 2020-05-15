@@ -76,7 +76,7 @@ To build with the smaller C libraries, modify the application configuration file
 }
 ```
 
-The build system build system reverts to the standard C library if support for the small C library is not enabled for your target. You can find more information [here]( https://github.com/ARMmbed/mbed-os-5-docs/blob/development/docs/program-setup/bare_metal/c_small_libs.md).
+The build system reverts to the standard C library if support for the small C library is not enabled for your target. You can find more information [here]( https://github.com/ARMmbed/mbed-os-5-docs/blob/development/docs/program-setup/bare_metal/c_small_libs.md).
 
 #### Using Mbed minimal printf library
 
