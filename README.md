@@ -1,7 +1,4 @@
-# Deprecation note
-
-**This repository has been deprecated and is no longer maintained.**
-
+![](./resources/official_armmbed_example_badge.png)
 # Bare metal blinky Mbed OS example
 
 This example shows how to achieve memory optimizations in Mbed OS. Starting with a blinky application, the example illustrates how to enable the bare metal profile and further memory optimizations.
